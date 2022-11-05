@@ -2,12 +2,27 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
 	import github from '$lib/images/github.svg';
+	import {Button, Theme} from "carbon-components-svelte";
+	import Sun from "carbon-icons-svelte/lib/Sun.svelte"
+	import AsleepFilled from "carbon-icons-svelte/lib/AsleepFilled.svelte"
+
+	let theme = "g80";
+	let isDarkTheme = true;
+	function toggleDarkTheme() {
+		theme = (isDarkTheme ? "white" : "g80");
+		isDarkTheme = !isDarkTheme
+		console.log("Theme inside head: ", theme)
+	}
+
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
+	<Theme bind:theme/>
+
+	<div class="corner left">
+		<a href="/">
 			<img src={logo} alt="SvelteKit" />
+			DEMOS
 		</a>
 	</div>
 
@@ -25,15 +40,25 @@
 			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
 				<a href="/sverdle">Sverdle</a>
 			</li>
+			<li aria-current={$page.url.pathname.startsWith('/counter') ? 'page' : undefined}>
+				<a href="/counter">Counter</a>
+			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
 		</svg>
 	</nav>
 
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
+	<div class="corner right">
+		<div class="darkmodetoggle" on:click={toggleDarkTheme}>
+			{#if isDarkTheme}
+				<Sun size="{24}"/>
+			{:else}
+				<AsleepFilled size="{24}"/>
+			{/if}
+		</div>
+		<a href="https://github.com/derjogi/demos">
+			<img class="github" class:isDarkTheme src={github} alt="GitHub" />
 		</a>
 	</div>
 </header>
@@ -44,23 +69,43 @@
 		justify-content: space-between;
 	}
 
+	.darkmodetoggle {
+		cursor: pointer;
+		margin: 5px;
+	}
+
 	.corner {
-		width: 3em;
+		width: 7em;
 		height: 3em;
+		padding: 7px
 	}
 
 	.corner a {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
+	}
+
+	.corner.left, .corner.right {
+		display: flex;
+		align-items: center;
+	}
+
+	.corner.right {
+		justify-content: right;
+	}
+
+	.corner.left {
+		justify-content: left;
 	}
 
 	.corner img {
 		width: 2em;
 		height: 2em;
 		object-fit: contain;
+	}
+
+	.corner img.github.isDarkTheme {
+		filter: invert(100%);
 	}
 
 	nav {
