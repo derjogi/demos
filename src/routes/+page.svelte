@@ -1,7 +1,5 @@
 <script>
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
-	import Search from "./components/Search.svelte"
+	import Search from "../lib/components/Search.svelte"
 	import {Button} from "carbon-components-svelte";
 </script>
 
@@ -20,7 +18,7 @@
 <div class="actions">
 	<Search/>
 	<Button href="/browse">Browse</Button>
-	<Button href="/create">Create</Button>
+	<Button class="bx--btn--secondary" href="/create">Create</Button>
 </div>
 
 <style>

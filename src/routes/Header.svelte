@@ -5,19 +5,28 @@
 	import {Button, Theme} from "carbon-components-svelte";
 	import Sun from "carbon-icons-svelte/lib/Sun.svelte"
 	import AsleepFilled from "carbon-icons-svelte/lib/AsleepFilled.svelte"
+	import darkMode from "../store.ts";
 
 	let theme = "g80";
-	let isDarkTheme = true;
+	let isDarkTheme
+	// We need to get the value out of the store...
+	darkMode.subscribe(isDark => isDarkTheme = isDark)
+
 	function toggleDarkTheme() {
 		theme = (isDarkTheme ? "white" : "g80");
-		isDarkTheme = !isDarkTheme
 		console.log("Theme inside head: ", theme)
+		darkMode.update(val => !val)
 	}
 
 </script>
 
 <header>
-	<Theme bind:theme/>
+	<Theme bind:theme
+	   tokens={{
+			"interactive-01": "#2fabd9",
+			"interactive-02": "#2cd261",
+  		}}
+	/>
 
 	<div class="corner left">
 		<a href="/">
