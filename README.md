@@ -1,4 +1,22 @@
-# create-svelte
+# DEMOS
+
+This project comes out of the desire to create an online deliberation & voting system coupled with it's own economic incentives tokens.
+
+It is only meant to be a rough prototype to showcase what I'm envisioning; creating the whole project by myself would take me multiple years, 
+and it is not always easy to explain this project in words, so a simple prototype seemed the best solution going forward.
+
+I have however now found some possible other adjacent projects that I might investigate first.
+Mainly [`decidim`](https://decidim.org), which looks like the most promising so far, but possibly also some new endeavours such as flowback.
+
+So this project will probably stall after just a few hours of development, but well, better to cut losses early ;-) 
+
+If by any chance anyone is ever reading this, I'm _very_ likely still interested in this space and active somewhere. 
+If you are as well (interested in this) feel free to hit me up :-) 
+
+
+
+## About setting up this project:
+## create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
